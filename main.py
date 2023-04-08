@@ -17,7 +17,7 @@ class Database_Creation(db.Model):
     # def __repr__(self):
     #     return f" User(name={name} , email={email} , phone = {phone_number})"
 
-db.create_all()
+#db.create_all()
 post_req = reqparse.RequestParser()
 post_req.add_argument("name",type=str,help="Name of te user")
 post_req.add_argument("email",type=str,help="Name of te user")
