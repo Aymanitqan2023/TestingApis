@@ -50,7 +50,7 @@ if x is None:
 else:
     ID = x+1
 
-print("Maximum Number of IDs: ",ID-1)
+
 class User_login_signup(Resource):
     @marshal_with(resource_fields)
     def get(self):
