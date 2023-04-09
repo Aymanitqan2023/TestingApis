@@ -1,4 +1,5 @@
 from flask import Flask,request
+import sqlite3
 from flask_restful import Api,Resource,reqparse,fields,marshal_with
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
@@ -39,7 +40,17 @@ resource_fields = {
     'error':fields.String
 }
 
-ID = 1
+conn = sqlite3.connect("database.db")
+cur = conn.cursor()
+cur.execute("Select max(id) from database__creation")
+x = cur.fetchall()[0][0]
+if x is None:
+    ID = 1
+
+else:
+    ID = x+1
+
+print("Maximum Number of IDs: ",ID-1)
 class User_login_signup(Resource):
     @marshal_with(resource_fields)
     def get(self):
